@@ -6,18 +6,19 @@ O controle de contatos na lista é feito manualmente através do arquivo `backen
 
 ## Instalação
 
-**Observações**: Alguns comandos precisam de permissão de `root`. Utilize `sudo` quando necessário. O servidor usado neste processo está rodando CentOS 7.
+**Observações**: O servidor usado neste processo está rodando Debian 10.
 
-1. Instale os pacotes necessários `git` e `epel-release`.  
+1. Instale o `git`.  
 Comandos:
 ```
-yum install -y git epel-release
+sudo apt install -y git
 ```
 
-2. Instale o Node.JS.  
+2. Instale o Node.JS e o NPM.  
 Comando:
 ```
-yum install nodejs
+sudo apt install -y nodejs
+sudo apt install -y npm
 ```
 
 3. Teste a instalação do Node. O retorno do comando deve ser o número da versão.  
@@ -29,32 +30,37 @@ node --version
 4. Clone este repositório. Recomendação: armazenar no diretório `/var/www/`.  
 Comandos:
 ```
+sudo mkdir /var/www
 cd /var/www
-git clone https://github.com/pckcml/lista-de-ramais.git
+sudo git clone https://github.com/pckcml/lista-de-ramais.git
 ```
 
 5. Instale as dependências do Node para o backend.  
 Comandos:
 ```
-npm install --global http-server
+sudo npm install --global http-server
 cd /var/www/lista-de-ramais/backend
-npm -i
+sudo npm install
 ```
 
 6. Copie os arquivos de serviço para o diretório do Systemd.  
 Comandos:
 ```
 cd /var/www/lista-de-ramais/
-cp services/lista-ramais-backend.service /etc/systemd/system/
-cp services/lista-ramais-frontend.service /etc/systemd/system/
+sudo cp services/lista-ramais-backend.service /etc/systemd/system/
+sudo cp services/lista-ramais-frontend.service /etc/systemd/system/
 ```
 
 7. Ative e habilite os serviços.  
 Comandos:
 ```
-systemctl enable lista-ramais-backend.service lista-ramais-frontend.service
-systemctl start lista-ramais-backend.service lista-ramais-frontend.service
+sudo systemctl enable lista-ramais-backend.service lista-ramais-frontend.service
+sudo systemctl start lista-ramais-backend.service lista-ramais-frontend.service
 ```
+
+8. Crie o host A chamado `ramais` no DNS (ou no seu arquivo `hosts`, para testes), apontando para o IP do servidor.
+
+9. Acesse a aplicação no endereço [http://ramais/](http://ramais/).
 
 ### Observação sobre sistema operacional
 
