@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Lista de Ramais</title>
+  </head>
+  <body>
+    <div class="container center">
+      <div id="logo">
+	    <a href="https://www.empresa.com/">
+		  <img src="./img/logo.png" alt="Logotipo Empresa" width="50%" />
+		</a>
+      </div>
+      <div id="links"></div>
+      <div class="pesquisa">
+        <label for="pesquisa">
+          <input
+            id="input"
+            style="width: 70%; margin-bottom: 30px; margin-top: 30px"
+            type="text"
+            name="pesquisa"
+            placeholder="Digite um nome, ramal, celular ou e-mail..."
+          />
+        </label>
+      </div>
+      <div class="lista">
+        <table class="striped centered">
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Departamento</th>
+              <th scope="col">Ramal</th>
+              <th scope="col">Email</th>
+            </tr>
+          </thead>
+          <tbody id="lista-ramais"></tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+  <script src="./js/render.js"></script>
+</html>

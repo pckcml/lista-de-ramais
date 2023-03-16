@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "nome": "Fulano",
+      "departamento": "Diretoria",
+      "ramal": "201",
+      "email": "fulano@empresa.com"
+    },
+    {
+      "nome": "Beltrano",
+      "departamento": "Administração",
+      "ramal": "210",
+      "email": "beltrano@empresa.com"
+    }
+  ],
+  "links": [{"title": "Teste", "url": "https://www.google.com"}]
+}
