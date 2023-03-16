@@ -1,4 +1,4 @@
-﻿const SERVER_IP = '192.168.15.41';
+﻿const SERVER_IP = 'ramais';
 const SERVER_PORT = '8081';
 
 //
