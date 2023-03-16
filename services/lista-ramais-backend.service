@@ -1,0 +1,14 @@
+[Unit]
+Description=Lista de ramais - Backend
+
+[Service]
+ExecStart=/usr/bin/env node /var/www/lista-de-ramais/backend/index.js
+Restart=always
+User=root
+Group=root
+PIDFile=/tmp/lista-de-ramais-backend.pid
+KillSignal=SIGQUIT
+WorkingDirectory=/var/www/lista-de-ramais/backend
+
+[Install]
+WantedBy=multi-user.target

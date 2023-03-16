@@ -1,6 +1,4 @@
-#!/usr/bin/env node
-
-const SERVER_IP = '192.168.15.41';
+const SERVER_IP = '0.0.0.0';
 const SERVER_PORT = '8081';
 
 //
