@@ -2,7 +2,7 @@
 Description=Lista de ramais - Frontend
 
 [Service]
-ExecStart=/usr/bin/env http-server /var/www/lista-de-ramais/frontend/public -p 80
+ExecStart=/usr/bin/env http-server /var/www/lista-de-ramais/frontend/public/ -p 80
 Restart=always
 User=root
 Group=root
