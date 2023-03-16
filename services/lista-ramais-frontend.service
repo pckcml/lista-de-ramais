@@ -2,13 +2,13 @@
 Description=Lista de ramais - Frontend
 
 [Service]
-ExecStart=/usr/bin/env http-server /var/www/lista-de-ramais/frontend -p 80
+ExecStart=/usr/bin/env http-server /var/www/lista-de-ramais/frontend/public -p 80
 Restart=always
 User=root
 Group=root
 PIDFile=/tmp/lista-de-ramais-frontend.pid
 KillSignal=SIGQUIT
-WorkingDirectory=/var/www/lista-de-ramais/frontend
+WorkingDirectory=/var/www/lista-de-ramais/frontend/public
 
 [Install]
 WantedBy=multi-user.target
