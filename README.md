@@ -90,5 +90,5 @@ Siga o formato JSON para adicionar, remover, e editar entradas. Cuidado com as v
 
 Sempre que editar o arquivo, reinicie o serviço do backend com o comando:
 ```
-systemctl restart lista-ramais-backend.service
+sudo systemctl restart lista-ramais-backend.service
 ```
