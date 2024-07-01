@@ -1,24 +1,26 @@
-﻿const SERVER_IP = 'ramais';
-const SERVER_PORT = '8081';
+//const SERVER_IP = '192.168.0.1';
+//const SERVER_PORT = '8080';
+const API_SERVER = 'https://your.server.here/api'
 
 //
 
 const tabelaRamais = document.getElementById('lista-ramais');
-const divLinks = document.getElementById('links');
+//const divLinks = document.getElementById('links');
 var users = [];
-var links = [];
+//var links = [];
 
 window.addEventListener('load', async () => {
   await fetchUsers();
-  await fecthLinks();
+  //await fecthLinks();
   renderTable(users);
-  renderLinks(links);
+  //renderLinks(links);
   inputFocus();
   handleSearch();
 });
 
 const fetchUsers = async () => {
-  const res = await fetch(`http://${SERVER_IP}:${SERVER_PORT}/users`);
+  //const res = await fetch(`http://${SERVER_IP}:${SERVER_PORT}/users`);
+  const res = await fetch(`${API_SERVER}/users`);
   const json = await res.json();
   users = json
     .map(({ nome, departamento, ramal, email }, index) => {
@@ -26,6 +28,7 @@ const fetchUsers = async () => {
         id: index,
         nome,
         nomeLowerCase: nome.toLowerCase(),
+        nomeNormalized: nome.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, ''),
         departamento,
         departamentoLowerCase: departamento.toLowerCase(),
         ramal,
@@ -38,13 +41,14 @@ const fetchUsers = async () => {
     });
 };
 
-const fecthLinks = async () => {
-  const res = await fetch(`http://${SERVER_IP}:${SERVER_PORT}/links`);
-  const json = await res.json();
-  links = json.map(({ title, url }, index) => {
-    return { id: index, title, url };
-  });
-};
+//const fecthLinks = async () => {
+  ////const res = await fetch(`http://${SERVER_IP}:${SERVER_PORT}/links`);
+  //const res = await fetch(`${API_SERVER}/links`);
+  //const json = await res.json();
+  //links = json.map(({ title, url }, index) => {
+    //return { id: index, title, url };
+  //});
+//};
 
 const renderTable = async (userArray) => {
   console.log(userArray);
@@ -63,31 +67,34 @@ const renderTable = async (userArray) => {
   });
 };
 
-const renderLinks = async (linkArray) => {
-  divLinks.innerHTML = '';
-  linkArray.forEach(({ title, url }) => {
-    let a = document.createElement('a');
-    let p = document.createElement('p');
-    let linkTitle = document.createTextNode(title);
-    a.appendChild(linkTitle);
-    a.title = title;
-    a.href = url;
-	a.target = "_blank";
-    p.appendChild(a);
-    divLinks.appendChild(p);
-    divLinks.classList.add('teste');
-  });
-};
+//const renderLinks = async (linkArray) => {
+  //divLinks.innerHTML = '';
+  //linkArray.forEach(({ title, url }) => {
+    //let a = document.createElement('a');
+    //let p = document.createElement('p');
+    //let linkTitle = document.createTextNode(title);
+    //a.appendChild(linkTitle);
+    //a.title = title;
+    //a.href = url;
+	//a.target = "_blank";
+    //p.appendChild(a);
+    //divLinks.appendChild(p);
+    //divLinks.classList.add('teste');
+  //});
+//};
 
 const handleSearch = () => {
   const handleType = async () => {
     const query = textInput.value.toLowerCase();
-    console.log(query);
+    //console.log(query);
     const filteredUsers = users.filter((user) => {
+      let ramal = user.ramal
+      let strRamal = (ramal + '')
       return (
         user.nomeLowerCase.includes(query) ||
+        user.nomeNormalized.includes(query) ||
         user.departamentoLowerCase.includes(query) ||
-        user.ramal.includes(query) ||
+        strRamal.includes(query) ||
         user.emailLowerCase.includes(query)
       );
     });
